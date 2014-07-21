@@ -1,0 +1,3738 @@
+<!-- Page: ContestsPage.ftl --><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<body>
+<!-- Codeforces JavaScripts. -->
+<script type="text/javascript">
+    if (window.parent.frames.length > 0) {
+        window.stop();
+    }
+</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+    $.ajaxPrefilter(function(options, originalOptions, xhr) {
+        var csrf = Codeforces.getCsrfToken();
+
+        if (csrf) {
+            var data = originalOptions.data;
+            if (originalOptions.data !== undefined) {
+                if (Object.prototype.toString.call(originalOptions.data) === '[object String]') {
+                    data = $.deparam(originalOptions.data);
+                }
+            } else {
+                data = {};
+            }
+            options.data = $.param($.extend(data, { csrf_token: csrf }));
+        }
+    });
+
+    window.getCodeforcesServerTime = function(callback) {
+        $.post("/data/time", {}, callback, "json");
+    }
+
+    window.updateTypography = function () {
+        $("div.ttypography code").addClass("tt");
+        $("div.ttypography pre>code").addClass("prettyprint").removeClass("tt");
+        $("div.ttypography table").addClass("bordertable");
+        prettyPrint();
+    }
+
+    $.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8", headers: {
+        'X-Csrf-Token': Codeforces.getCsrfToken()
+    }});
+
+    window.updateTypography();
+
+    Codeforces.signForms();
+
+    $(".second-level-menu-list").lavaLamp({
+        fx: "backout",
+        speed: 1000
+    });
+
+
+    Codeforces.countdown();
+    $("a[rel='photobox']").colorbox();
+
+
+        });
+    </script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-743380-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function () {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = (document.location.protocol == 'https:' ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div id="body">
+        <!-- Frame: Header.ftl -->
+<div id="header" style="position:relative;">
+    <div style="float:left;">
+            <a href="/"><img src="http://worker.codeforces.ru/static/images/codeforces-logo-with-upper-beta.png"/></a>
+    </div>
+    <div class="lang-chooser">
+        <div style="text-align: right;">
+            <a href="?locale=en"><img src="http://worker.codeforces.ru/static/images/flags/24/gb.png" title="In English" alt="In English"/></a>
+            <a href="?locale=ru"><img src="http://worker.codeforces.ru/static/images/flags/24/ru.png" title="По-русски" alt="По-русски"/></a>
+        </div>
+        <div>
+                <a href="/enter">Enter</a>
+                 | 
+                <a href="/register">Register</a>
+                
+        </div>
+    </div>
+    <div style="font-size:0.8em;margin-top:0.25em;position:absolute;right:0;top:4.25em;">
+    </div>
+    <br style="clear: both;"/>
+</div>
+<!-- /Frame: Header.ftl -->
+        <!-- Frame: MainMenuFrame.ftl -->
+    <div class="roundbox menu-box" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+            <div class="roundbox-lb">&nbsp;</div>
+            <div class="roundbox-rb">&nbsp;</div>
+<div class="menu-list-container">
+    <ul class="menu-list main-menu-list">
+                <li class=""><a href="/">Home</a></li>
+                <li class="current"><a href="/contests">Contests</a></li>
+                <li class=""><a href="/gyms">Gym</a></li>
+                <li class=""><a href="/problemset">Problemset</a></li>
+                <li class=""><a href="/groups">Groups</a></li>
+                <li class=""><a href="/ratings">Rating</a></li>
+                <li class=""><a href="/api/help">API</a></li>
+                <li class=""><a href="/help">Help</a></li>
+                <li class=""><a href="/rcc2014">RCC <img class="icon" src="http://stat.codeforces.ru/images/icons/cup.png"/></a></li>
+    </ul>
+    <br style="clear: both;"/>
+</div>
+    </div>
+<!-- /Frame: MainMenuFrame.ftl -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("input.search").focus(function() {
+                if ($(this).attr("data-isPlaceholder") === "true") {
+                    $(this).val("");
+                    $(this).removeAttr("data-isPlaceholder");
+                }
+            });
+        });
+    </script>
+        <br style="height: 3em; clear: both;"/>
+        <div style="position: relative;">
+                    <div id="sidebar"><!-- Frame: ComplexFrame.ftl --><!-- Frame: NewsSidebarFrame.ftl -->
+    <div class="roundbox sidebox" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+        <div class="caption titled">&rarr; Pay attention
+            <div class="top-links">
+            </div>
+        </div>
+<div style="padding: 0.5em;">
+        <div style="text-align:center;border-bottom: 1px solid rgb(185, 185, 185);margin:0 -0.5em 0.5em -0.5em;padding-bottom:0.5em;">
+            <span class='contest-state-phase'>Before contest</span><br/><a href="/contests/451">Codeforces Round #258 (Div. 2)</a><br/><span class='countdown' home='http://worker.codeforces.ru/static' noRedirection='true' textBeforeRedirect=''><span title="77:46:52">3 days</span></span>
+        </div>
+        <div style="text-align:center;">
+            <div class="socials" style="text-align: left;">
+<div style="margin-top: 0.85em;position: relative;">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "http://connect.facebook.net/en_EN/all.js#appId=554666954583323&xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-href="http://codeforces.com/contests/451" data-send="false" data-width="256" data-show-faces="false" data-font="arial" data-ref='51664'></div>
+</div>
+</div>
+        </div>
+</div>
+    </div>
+<!-- /Frame: NewsSidebarFrame.ftl --><!-- /Frame: ComplexFrame.ftl --></div>
+                    <div id="content" class="content-with-sidebar">
+
+<div class="contestList">
+
+<div class="datatable"
+     
+     style="background-color: #E1E1E1;padding-bottom:3px;">
+            <div class="lt">&nbsp;</div>
+            <div class="rt">&nbsp;</div>
+            <div class="lb">&nbsp;</div>
+            <div class="rb">&nbsp;</div>
+
+            <div style="padding: 4px 0 0 6px;font-size:1em;position:relative;">
+                Current or upcoming contests
+
+                <div style="position:absolute;right:0.25em;top:0.35em;">
+                    <img class="closed" src="http://worker.codeforces.ru/static/images/icons/control.png"/>
+
+                    <span class="filter" style="display:none;">
+                        <img class="opened" src="http://worker.codeforces.ru/static/images/icons/control-270.png"/>
+                        <input style="position:relative;bottom:2px;border:1px solid #aaa;height:17px;font-size:13px;"/>
+                    </span>
+                </div>
+            </div>
+            <div style="background-color: white;margin:0.3em 3px 0 3px;position:relative;">
+            <div class="ilt">&nbsp;</div>
+            <div class="irt">&nbsp;</div>
+            <table class="">
+<tr>
+    <th style="100%;">Name</th>
+    <th style="width:5em;">Start</th>
+    <th style="width:5em;">Duration</th>
+    <th style="width:10em;">&nbsp;</th>
+        <th style="width:20em;">&nbsp;</th>
+</tr>
+<tr
+    
+    data-contestId="451"
+>
+    <td>
+Codeforces Round #258 (Div. 2)    </td>
+    <td>
+                <a href="http://timeanddate.com/worldclock/fixedtime.html?day=24&month=7&year=2014&hour=19&min=30&sec=0&p1=166" target="_blank">
+                Jul/24/2014 19:30
+                </a>
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+                Before start <span home="http://worker.codeforces.ru/static" noRedirection="true" class="countdown"><span title="77:46:54">3 days</span></span>
+    </td>
+    <td style="font-size:0.8em;">
+                    Before registration <span class="countdown"><span title="60:16:54">3 days</span></span>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="452"
+>
+    <td>
+MemSQL Start[c]UP 2.0 - Round 1    </td>
+    <td>
+                <a href="http://timeanddate.com/worldclock/fixedtime.html?day=27&month=7&year=2014&hour=21&min=0&sec=0&p1=166" target="_blank">
+                Jul/27/2014 21:00
+                </a>
+    </td>
+    <td>
+        02:30
+    </td>
+    <td class="state">
+                Before start <span home="http://worker.codeforces.ru/static" noRedirection="true" class="countdown"><span title="151:16:53">6 days</span></span>
+    </td>
+    <td style="font-size:0.8em;">
+                    Before registration <span class="countdown"><span title="127:16:53">5 days</span></span>
+    </td>
+
+</tr>
+            </table>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+                // Create new ':containsIgnoreCase' selector for search
+                jQuery.expr[':'].containsIgnoreCase = function(a, i, m) {
+                    return jQuery(a).text().toUpperCase()
+                            .indexOf(m[3].toUpperCase()) >= 0;
+                };
+
+                if (window.updateDatatableFilter == undefined) {
+                    window.updateDatatableFilter = function(i) {
+                        var parent = $(i).parent().parent().parent().parent();
+                        $("tr.no-items", parent).remove();
+                        $("tr", parent).hide().removeClass('visible');
+                        var text = $(i).val();
+                        if (text) {
+                            $("tr" + ":containsIgnoreCase('" + text + "')", parent).show().addClass('visible');
+                        } else {
+                            $("tr", parent).show().addClass('visible');
+                        }
+
+                        var found = false;
+                        var visibleRowCount = 0;
+                        $("tr", parent).each(function() {
+                            if (!found) {
+                                if ($(this).find("th").size() > 0) {
+                                    $(this).show().addClass('visible');
+                                    found = true;
+                                }
+                            }
+                            if ($(this).hasClass('visible')) {
+                                visibleRowCount++;
+                            }
+                        });
+                        if (visibleRowCount == (found ? 1 : 0)) {
+                            $("<tr class='no-items visible'><td style=\"text-align:left;\"colspan=\"32\">No items<\/td><\/tr>").appendTo($(parent).find('table'));
+                        }
+                        $(parent).find("tr td").removeClass("dark");
+                        $(parent).find("tr.visible:odd td").addClass("dark");
+                    }
+
+                    $(".datatable .closed").click(function() {
+                        var parent = $(this).parent();
+                        $(this).hide();
+                        $(".filter", parent).fadeIn(function() {
+                            $("input", parent).val("").focus().css("border", "1px solid #aaa");
+                        });
+                    });
+
+                    $(".datatable .opened").click(function() {
+                        var parent = $(this).parent().parent();
+                        $(".filter", parent).fadeOut(function() {
+                            $(".closed", parent).show();
+                            $("input", parent).val("").each(function() {
+                                window.updateDatatableFilter(this);
+                            });
+                        });
+                    });
+
+                    $(".datatable .filter input").keyup(function(e) {
+                        window.updateDatatableFilter(this);
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+
+                    $(".datatable table").each(function() {
+                        var found = false;
+                        $("tr", this).each(function() {
+                            if (!found && $(this).find("th").size() == 0) {
+                                found = true;
+                            }
+                        });
+                        if (!found) {
+                            $("<tr class='no-items visible'><td style=\"text-align:left;\"colspan=\"32\">No items<\/td><\/tr>").appendTo(this);
+                        }
+                    });
+
+                    // Applies styles to datatables.
+                    $(".datatable").each(function() {
+                        $(this).find("tr:first th").addClass("top");
+                        $(this).find("tr:last td").addClass("bottom");
+                        $(this).find("tr:odd td").addClass("dark");
+                        $(this).find("tr td:first-child, tr th:first-child").addClass("left");
+                        $(this).find("tr td:last-child, tr th:last-child").addClass("right");
+                    });
+
+                    $(".datatable table.tablesorter").each(function() {
+                        $(this).bind("sortEnd", function () {
+                            $(".datatable").each(function() {
+                                $(this).find("th, td")
+                                    .removeClass("top").removeClass("bottom")
+                                    .removeClass("left").removeClass("right")
+                                    .removeClass("dark");
+                                $(this).find("tr:first th").addClass("top");
+                                $(this).find("tr:last td").addClass("bottom");
+                                $(this).find("tr:odd td").addClass("dark");
+                                $(this).find("tr td:first-child, tr th:first-child").addClass("left");
+                                $(this).find("tr td:last-child, tr th:last-child").addClass("right");
+                            });
+                        });
+                    });
+                }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+if (!window.hasContestDescriptionLinkHandler) {
+    window.hasContestDescriptionLinkHandler = true;
+    $(".contest-description-link").click(function() {
+        var contestId = $(this).attr("data-contestId");
+        $.post("/data/contestInfo", {action: "getDescription", contestId: contestId}, function(result) {
+            if (result["success"] == "true")
+                Codeforces.alert(result["description"]);
+        }, "json");
+        return false;
+    });
+}
+
+$(".toggle-mashup-manager").click(function () {
+    $(this).attr("disabled", "disabled");
+    var contestId = $(this).attr("data-contestId");
+    var newValue = $(this).is(":checked");
+    $.post("/data/mashup",
+        {contestId: contestId, action: "toggleMashupContestManagerMode", newValue: newValue},
+        function(response) {
+            if (response["success"] === "true") {
+                Codeforces.reload();
+            } else {
+                Codeforces.showMessage("Unable to toggle mashup contest manager mode");
+                $(this).removeAttr("disabled");
+            }
+        },
+        "json"
+    );
+    return false;
+});
+        });
+    </script>
+
+
+
+
+<!-- Frame: PastContestsFrame.ftl -->
+<div class="contests-table" style="margin-top:2em;">
+    Contest history
+<div class="datatable"
+     
+     style="background-color: #E1E1E1;padding-bottom:3px;">
+            <div class="lt">&nbsp;</div>
+            <div class="rt">&nbsp;</div>
+            <div class="lb">&nbsp;</div>
+            <div class="rb">&nbsp;</div>
+
+            <div style="padding: 4px 0 0 6px;font-size:1em;position:relative;">
+                Past contests
+
+                <div style="position:absolute;right:0.25em;top:0.35em;">
+                    <img class="closed" src="http://worker.codeforces.ru/static/images/icons/control.png"/>
+
+                    <span class="filter" style="display:none;">
+                        <img class="opened" src="http://worker.codeforces.ru/static/images/icons/control-270.png"/>
+                        <input style="position:relative;bottom:2px;border:1px solid #aaa;height:17px;font-size:13px;"/>
+                    </span>
+                </div>
+            </div>
+            <div style="background-color: white;margin:0.3em 3px 0 3px;position:relative;">
+            <div class="ilt">&nbsp;</div>
+            <div class="irt">&nbsp;</div>
+            <table class="">
+<tr>
+    <th style="100%;">Name</th>
+    <th style="width:5em;">Start</th>
+    <th style="width:5em;">Duration</th>
+    <th style="width:10em;">&nbsp;</th>
+        <th style="width:6em;">&nbsp;</th>
+</tr>
+<tr
+    
+    data-contestId="449"
+>
+    <td>
+Codeforces Round #257 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/449">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/449/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/19/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/449/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/449"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1144</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="450"
+>
+    <td>
+Codeforces Round #257 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/450">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/450/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/19/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/450/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/450"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3474</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="448"
+>
+    <td>
+Codeforces Round #256 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/448">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/448/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/17/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/448/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/448"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x4132</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="446"
+>
+    <td>
+Codeforces Round #FF (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/446">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/446/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/13/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/446/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/446"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x989</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="447"
+>
+    <td>
+Codeforces Round #FF (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/447">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/447/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/13/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/447/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/447"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3144</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="444"
+>
+    <td>
+Codeforces Round #254 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/444">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/444/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/06/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/444/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/444"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1002</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="445"
+>
+    <td>
+Codeforces Round #254 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/445">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/445/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jul/06/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/445/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/445"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3012</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="442"
+>
+    <td>
+Codeforces Round #253 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/442">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/442/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/19/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/442/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/442"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1001</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="443"
+>
+    <td>
+Codeforces Round #253 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/443">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/443/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/19/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/443/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/443"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2860</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="436"
+>
+    <td>
+Zepto Code Rush 2014                <br/>
+                <a style="font-size: 0.8em;" href="/contest/436">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/436/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/13/2014
+    </td>
+    <td>
+        02:30
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/436/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/436"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x4663</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="441"
+>
+    <td>
+Codeforces Round #252 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/441">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/441/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/08/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/441/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/441"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3296</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="439"
+>
+    <td>
+Codeforces Round #251 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/439">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/439/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/04/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/439/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/439"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3579</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="440"
+>
+    <td>
+Testing Round #10                <br/>
+                <a style="font-size: 0.8em;" href="/contest/440">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/440/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/03/2014
+    </td>
+    <td>
+        01:30
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/440/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/440"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x997</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="437"
+>
+    <td>
+Codeforces Round #250 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/437">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/437/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/01/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/437/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/437"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2859</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="438"
+>
+    <td>
+Codeforces Round #250 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/438">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/438/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jun/01/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/438/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/438"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1075</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="435"
+>
+    <td>
+Codeforces Round #249 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/435">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/435/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/30/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/435/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/435"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3441</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="433"
+>
+    <td>
+Codeforces Round #248 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/433">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/433/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/24/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/433/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/433"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2024</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="434"
+>
+    <td>
+Codeforces Round #248 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/434">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/434/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/24/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/434/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/434"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x728</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="431"
+>
+    <td>
+Codeforces Round #247 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/431">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/431/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/21/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/431/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/431"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3454</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="432"
+>
+    <td>
+Codeforces Round #246 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/432">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/432/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/15/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/432/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/432"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3296</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="429"
+>
+    <td>
+Codeforces Round #245 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/429">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/429/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/11/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/429/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/429"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x999</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="430"
+>
+    <td>
+Codeforces Round #245 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/430">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/430/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/11/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/430/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/430"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2754</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="427"
+>
+    <td>
+Codeforces Round #244 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/427">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/427/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                May/02/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/427/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/427"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3259</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="425"
+>
+    <td>
+Codeforces Round #243 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/425">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/425/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/27/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/425/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/425"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x912</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="426"
+>
+    <td>
+Codeforces Round #243 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/426">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/426/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/27/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/426/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/426"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2556</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="424"
+>
+    <td>
+Codeforces Round #242 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/424">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/424/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/25/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/424/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/424"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2045</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="419"
+>
+    <td>
+Coder-Strike 2014 - Finals                <br/>
+                <a style="font-size: 0.8em;" href="/contest/419">
+                    Enter &raquo;
+                </a>
+            <br/>
+            <br/>
+    </td>
+    <td>
+                Apr/22/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/419/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/419"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x25</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="420"
+>
+    <td>
+Coder-Strike 2014 - Finals (online edition, Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/420">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/420/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/22/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/420/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/420"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x571</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="421"
+>
+    <td>
+Coder-Strike 2014 - Finals (online edition, Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/421">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/421/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/22/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/421/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/421"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1439</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="413"
+>
+    <td>
+Coder-Strike 2014 - Round 2                <br/>
+                <a style="font-size: 0.8em;" href="/contest/413">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/413/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/20/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/413/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/413"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1659</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="412"
+>
+    <td>
+Coder-Strike 2014 - Round 1                <br/>
+                <a style="font-size: 0.8em;" href="/contest/412">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/412/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/18/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/412/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/412"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2279</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="417"
+>
+    <td>
+RCC 2014 Warmup (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/417">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/417/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/17/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/417/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/417"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2413</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="418"
+>
+    <td>
+RCC 2014 Warmup (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/418">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/418/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/17/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/418/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/418"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x852</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="411"
+>
+    <td>
+Coder-Strike 2014 - Qualification Round                <br/>
+                <a style="font-size: 0.8em;" href="/contest/411">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/411/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/15/2014
+    </td>
+    <td>
+        1:00:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/411/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/411"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2282</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="416"
+>
+    <td>
+Codeforces Round #241 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/416">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/416/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/13/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/416/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/416"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2699</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="414"
+>
+    <td>
+Codeforces Round #240 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/414">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/414/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/06/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/414/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/414"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x996</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="415"
+>
+    <td>
+Codeforces Round #240 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/415">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/415/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/06/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/415/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/415"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2813</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="409"
+>
+    <td>
+April Fools Day Contest 2014                <br/>
+                <a style="font-size: 0.8em;" href="/contest/409">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/409/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Apr/01/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/409/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/409"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3447</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="407"
+>
+    <td>
+Codeforces Round #239 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/407">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/407/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/30/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/407/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/407"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x774</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="408"
+>
+    <td>
+Codeforces Round #239 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/408">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/408/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/30/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/408/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/408"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1761</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="405"
+>
+    <td>
+Codeforces Round #238 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/405">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/405/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/22/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/405/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/405"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2969</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="406"
+>
+    <td>
+Codeforces Round #238 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/406">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/406/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/22/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/406/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/406"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1052</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="404"
+>
+    <td>
+Codeforces Round #237 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/404">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/404/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/19/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/404/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/404"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3462</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="402"
+>
+    <td>
+Codeforces Round #236 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/402">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/402/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/16/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/402/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/402"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2891</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="403"
+>
+    <td>
+Codeforces Round #236 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/403">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/403/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/16/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/403/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/403"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1011</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="401"
+>
+    <td>
+Codeforces Round #235 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/401">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/401/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/10/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/401/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/401"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3188</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="400"
+>
+    <td>
+Codeforces Round #234 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/400">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/400/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/05/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/400/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/400"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3543</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="398"
+>
+    <td>
+Codeforces Round #233 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/398">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/398/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/01/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/398/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/398"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x80</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="399"
+>
+    <td>
+Codeforces Round #233 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/399">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/399/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Mar/01/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/399/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/399"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x108</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="396"
+>
+    <td>
+Codeforces Round #232 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/396">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/396/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/26/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/396/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/396"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x30</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="397"
+>
+    <td>
+Codeforces Round #232 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/397">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/397/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/26/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/397/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/397"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x56</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="394"
+>
+    <td>
+Codeforces Round #231 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/394">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/394/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/20/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/394/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/394"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x41</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="392"
+>
+    <td>
+Codeforces Round #230 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/392">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/392/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/18/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/392/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/392"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x17</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="393"
+>
+    <td>
+Codeforces Round #230 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/393">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/393/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/18/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/393/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/393"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x46</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="391"
+>
+    <td>
+Rockethon 2014                <br/>
+                <a style="font-size: 0.8em;" href="/contest/391">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/391/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/16/2014
+    </td>
+    <td>
+        03:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/391/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/391"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x15</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="390"
+>
+    <td>
+Codeforces Round #229 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/390">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/390/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/11/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/390/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/390"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x52</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="388"
+>
+    <td>
+Codeforces Round #228 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/388">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/388/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/03/2014
+    </td>
+    <td>
+        02:05
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/388/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/388"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1144</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="389"
+>
+    <td>
+Codeforces Round #228 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/389">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/389/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Feb/03/2014
+    </td>
+    <td>
+        02:05
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/389/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/389"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3024</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="387"
+>
+    <td>
+Codeforces Round #227 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/387">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/387/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/30/2014
+    </td>
+    <td>
+        02:10
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/387/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/387"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3518</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="385"
+>
+    <td>
+Codeforces Round #226 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/385">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/385/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/24/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/385/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/385"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3795</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="383"
+>
+    <td>
+Codeforces Round #225 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/383">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/383/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/20/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/383/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/383"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x988</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="384"
+>
+    <td>
+Codeforces Round #225 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/384">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/384/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/20/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/384/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/384"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3050</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="382"
+>
+    <td>
+Codeforces Round #224 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/382">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/382/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/17/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/382/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/382"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3811</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="386"
+>
+    <td>
+Testing Round #9                <br/>
+                <a style="font-size: 0.8em;" href="/contest/386">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/386/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/17/2014
+    </td>
+    <td>
+        01:30
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/386/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/386"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x506</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="380"
+>
+    <td>
+Codeforces Round #223 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/380">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/380/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/12/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/380/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/380"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x940</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="381"
+>
+    <td>
+Codeforces Round #223 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/381">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/381/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Jan/12/2014
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/381/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/381"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2978</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="379"
+>
+    <td>
+Good Bye 2013                <br/>
+                <a style="font-size: 0.8em;" href="/contest/379">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/379/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/30/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/379/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/379"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3944</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="377"
+>
+    <td>
+Codeforces Round #222 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/377">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/377/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/29/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/377/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/377"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x884</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="378"
+>
+    <td>
+Codeforces Round #222 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/378">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/378/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/29/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/378/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/378"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2520</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="375"
+>
+    <td>
+Codeforces Round #221 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/375">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/375/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/24/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/375/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/375"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x859</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="376"
+>
+    <td>
+Codeforces Round #221 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/376">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/376/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/24/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/376/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/376"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2513</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="374"
+>
+    <td>
+Codeforces Round #220 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/374">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/374/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/18/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/374/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/374"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3069</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="372"
+>
+    <td>
+Codeforces Round #219 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/372">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/372/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/13/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/372/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/372"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x966</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="373"
+>
+    <td>
+Codeforces Round #219 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/373">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/373/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/13/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/373/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/373"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2474</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="371"
+>
+    <td>
+Codeforces Round #218 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/371">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/371/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/08/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/371/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/371"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2662</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="370"
+>
+    <td>
+Codeforces Round #217 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/370">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/370/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Dec/07/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/370/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/370"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2395</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="369"
+>
+    <td>
+Codeforces Round #216 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/369">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/369/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/29/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/369/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/369"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3255</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="367"
+>
+    <td>
+Codeforces Round #215 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/367">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/367/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/26/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/367/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/367"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x966</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="368"
+>
+    <td>
+Codeforces Round #215 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/368">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/368/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/26/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/368/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/368"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2608</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="366"
+>
+    <td>
+Codeforces Round #214 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/366">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/366/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/24/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/366/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/366"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2851</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="364"
+>
+    <td>
+Codeforces Round #213 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/364">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/364/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/19/2013
+    </td>
+    <td>
+        02:05
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/364/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/364"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x976</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="365"
+>
+    <td>
+Codeforces Round #213 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/365">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/365/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/19/2013
+    </td>
+    <td>
+        02:05
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/365/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/365"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2551</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="362"
+>
+    <td>
+Codeforces Round #212 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/362">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/362/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/14/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/362/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/362"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3087</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="363"
+>
+    <td>
+Codeforces Round #211 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/363">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/363/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/11/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/363/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/363"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1799</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="360"
+>
+    <td>
+Codeforces Round #210 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/360">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/360/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/10/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/360/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/360"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x871</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="361"
+>
+    <td>
+Codeforces Round #210 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/361">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/361/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/10/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/361/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/361"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2543</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="359"
+>
+    <td>
+Codeforces Round #209 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/359">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/359/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Nov/02/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/359/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/359"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2109</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="358"
+>
+    <td>
+Codeforces Round #208 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/358">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/358/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/25/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/358/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/358"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3658</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="356"
+>
+    <td>
+Codeforces Round #207 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/356">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/356/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/15/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/356/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/356"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x891</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="357"
+>
+    <td>
+Codeforces Round #207 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/357">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/357/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/15/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/357/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/357"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2532</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="354"
+>
+    <td>
+Codeforces Round #206 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/354">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/354/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/13/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/354/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/354"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x966</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="355"
+>
+    <td>
+Codeforces Round #206 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/355">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/355/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/13/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/355/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/355"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2668</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="353"
+>
+    <td>
+Codeforces Round #205 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/353">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/353/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/10/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/353/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/353"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3226</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="351"
+>
+    <td>
+Codeforces Round #204 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/351">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/351/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/04/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/351/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/351"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x1018</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="352"
+>
+    <td>
+Codeforces Round #204 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/352">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/352/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/04/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/352/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/352"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3081</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="350"
+>
+    <td>
+Codeforces Round #203 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/350">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/350/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Oct/01/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/350/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/350"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3586</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="348"
+>
+    <td>
+Codeforces Round #202 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/348">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/348/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Sep/27/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/348/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/348"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x820</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="349"
+>
+    <td>
+Codeforces Round #202 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/349">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/349/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Sep/27/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/349/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/349"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x3065</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="346"
+>
+    <td>
+Codeforces Round #201 (Div. 1)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/346">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/346/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Sep/20/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/346/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/346"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x874</a>
+    </td>
+
+</tr>
+<tr
+    
+    data-contestId="347"
+>
+    <td>
+Codeforces Round #201 (Div. 2)                <br/>
+                <a style="font-size: 0.8em;" href="/contest/347">
+                    Enter &raquo;
+                </a>
+            <br/>
+                <a style="font-size: 0.8em;" href="/contest/347/virtual">
+                    Virtual participation &raquo;
+                </a>
+            <br/>
+    </td>
+    <td>
+                Sep/20/2013
+    </td>
+    <td>
+        02:00
+    </td>
+    <td class="state">
+            <div>
+            <a href="/contest/347/standings">Final standings</a>
+            </div>
+    </td>
+    <td style="font-size:0.8em;">
+<a title="Registered" href="/contestRegistrants/347"><img style="vertical-align: middle;" src="http://worker.codeforces.ru/static/images/icons/user.png"/>&nbsp;x2928</a>
+    </td>
+
+</tr>
+            </table>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+                // Create new ':containsIgnoreCase' selector for search
+                jQuery.expr[':'].containsIgnoreCase = function(a, i, m) {
+                    return jQuery(a).text().toUpperCase()
+                            .indexOf(m[3].toUpperCase()) >= 0;
+                };
+
+                if (window.updateDatatableFilter == undefined) {
+                    window.updateDatatableFilter = function(i) {
+                        var parent = $(i).parent().parent().parent().parent();
+                        $("tr.no-items", parent).remove();
+                        $("tr", parent).hide().removeClass('visible');
+                        var text = $(i).val();
+                        if (text) {
+                            $("tr" + ":containsIgnoreCase('" + text + "')", parent).show().addClass('visible');
+                        } else {
+                            $("tr", parent).show().addClass('visible');
+                        }
+
+                        var found = false;
+                        var visibleRowCount = 0;
+                        $("tr", parent).each(function() {
+                            if (!found) {
+                                if ($(this).find("th").size() > 0) {
+                                    $(this).show().addClass('visible');
+                                    found = true;
+                                }
+                            }
+                            if ($(this).hasClass('visible')) {
+                                visibleRowCount++;
+                            }
+                        });
+                        if (visibleRowCount == (found ? 1 : 0)) {
+                            $("<tr class='no-items visible'><td style=\"text-align:left;\"colspan=\"32\">No items<\/td><\/tr>").appendTo($(parent).find('table'));
+                        }
+                        $(parent).find("tr td").removeClass("dark");
+                        $(parent).find("tr.visible:odd td").addClass("dark");
+                    }
+
+                    $(".datatable .closed").click(function() {
+                        var parent = $(this).parent();
+                        $(this).hide();
+                        $(".filter", parent).fadeIn(function() {
+                            $("input", parent).val("").focus().css("border", "1px solid #aaa");
+                        });
+                    });
+
+                    $(".datatable .opened").click(function() {
+                        var parent = $(this).parent().parent();
+                        $(".filter", parent).fadeOut(function() {
+                            $(".closed", parent).show();
+                            $("input", parent).val("").each(function() {
+                                window.updateDatatableFilter(this);
+                            });
+                        });
+                    });
+
+                    $(".datatable .filter input").keyup(function(e) {
+                        window.updateDatatableFilter(this);
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+
+                    $(".datatable table").each(function() {
+                        var found = false;
+                        $("tr", this).each(function() {
+                            if (!found && $(this).find("th").size() == 0) {
+                                found = true;
+                            }
+                        });
+                        if (!found) {
+                            $("<tr class='no-items visible'><td style=\"text-align:left;\"colspan=\"32\">No items<\/td><\/tr>").appendTo(this);
+                        }
+                    });
+
+                    // Applies styles to datatables.
+                    $(".datatable").each(function() {
+                        $(this).find("tr:first th").addClass("top");
+                        $(this).find("tr:last td").addClass("bottom");
+                        $(this).find("tr:odd td").addClass("dark");
+                        $(this).find("tr td:first-child, tr th:first-child").addClass("left");
+                        $(this).find("tr td:last-child, tr th:last-child").addClass("right");
+                    });
+
+                    $(".datatable table.tablesorter").each(function() {
+                        $(this).bind("sortEnd", function () {
+                            $(".datatable").each(function() {
+                                $(this).find("th, td")
+                                    .removeClass("top").removeClass("bottom")
+                                    .removeClass("left").removeClass("right")
+                                    .removeClass("dark");
+                                $(this).find("tr:first th").addClass("top");
+                                $(this).find("tr:last td").addClass("bottom");
+                                $(this).find("tr:odd td").addClass("dark");
+                                $(this).find("tr td:first-child, tr th:first-child").addClass("left");
+                                $(this).find("tr td:last-child, tr th:last-child").addClass("right");
+                            });
+                        });
+                    });
+                }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+if (!window.hasContestDescriptionLinkHandler) {
+    window.hasContestDescriptionLinkHandler = true;
+    $(".contest-description-link").click(function() {
+        var contestId = $(this).attr("data-contestId");
+        $.post("/data/contestInfo", {action: "getDescription", contestId: contestId}, function(result) {
+            if (result["success"] == "true")
+                Codeforces.alert(result["description"]);
+        }, "json");
+        return false;
+    });
+}
+
+$(".toggle-mashup-manager").click(function () {
+    $(this).attr("disabled", "disabled");
+    var contestId = $(this).attr("data-contestId");
+    var newValue = $(this).is(":checked");
+    $.post("/data/mashup",
+        {contestId: contestId, action: "toggleMashupContestManagerMode", newValue: newValue},
+        function(response) {
+            if (response["success"] === "true") {
+                Codeforces.reload();
+            } else {
+                Codeforces.showMessage("Unable to toggle mashup contest manager mode");
+                $(this).removeAttr("disabled");
+            }
+        },
+        "json"
+    );
+    return false;
+});
+        });
+    </script>
+<!-- Frame: PaginationFrame.ftl -->
+<div class="pagination">
+    <ul>
+            <span class="inactive">&larr;</span>
+        <li>
+                <span class="page-index active" pageIndex="1"><a href="/contests/page/1">1</a></span>
+        </li>
+        <li>
+                <span class="page-index" pageIndex="2"><a href="/contests/page/2">2</a></span>
+        </li>
+        <li>
+                <span class="page-index" pageIndex="3"><a href="/contests/page/3">3</a></span>
+        </li>
+        <li>
+                <span class="page-index" pageIndex="4"><a href="/contests/page/4">4</a></span>
+        </li>
+        <li>
+                <span class="page-index" pageIndex="5"><a href="/contests/page/5">5</a></span>
+        </li>
+            <li><a href="/contests/page/2" class="arrow">&rarr;</a></li>
+    </ul>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+function handlePaginationKeyboardEvent(right) {
+    var pageIndex = parseInt($(".pagination").find("span.active").attr("pageIndex"));
+    if (right) {
+        pageIndex++;
+    } else {
+        pageIndex--;
+    }
+    $(".pagination").find("span[pageIndex=" + pageIndex + "]").each(function() {
+        Codeforces.redirect($(this).find("a").attr("href"));
+    });
+}
+$(document).keydown(function (e) {
+     var code = (e.keyCode ? e.keyCode : e.which);
+     if (e.ctrlKey) {
+        if (code == 37 || code == 39) {
+            handlePaginationKeyboardEvent(code == 39);
+        }
+     }
+});
+        });
+    </script>
+<!-- /Frame: PaginationFrame.ftl --></div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.post("/data/contests", {action: "getSolvedProblemCountsByContest"}, function(response) {
+                var c = response["solvedProblemCountsByContestId"];
+                var p = response["problemCountsByContestId"];
+                $(".contests-table tr[data-contestId]").each(function() {
+                    var contestId = $(this).attr("data-contestId");
+                    var problemCount = c[contestId];
+                    var totalCount = p[contestId];
+                    if (problemCount && problemCount > 0) {
+                        var td = $(this).find("td.state");
+                        if (problemCount < totalCount)
+                            td.css("background-color", "#def");
+                        else
+                            td.css("background-color", "#D4EDC9");
+                        td.append("<div class='notice small' style='margin-top: 0.5em;'>Solved: " + problemCount + " out of " + totalCount + "</div>");
+                    }
+                });
+            }, "json");
+        });
+    </script>
+<!-- /Frame: PastContestsFrame.ftl --></div>
+            </div>
+        </div>
+<!-- Frame: Footer.ftl -->
+<br style="clear: both;"/>
+<div id="footer">
+    <div><a href="http://codeforces.com/">Codeforces</a> (c) Copyright 2010-2014 Mike Mirzayanov</div>
+    <div>The only programming contests Web 2.0 platform</div>
+    <div>Server time: 2014-07-21 13:43:08 (p1).</div>
+</div>
+<!-- /Frame: Footer.ftl -->    <script type="text/javascript">
+        $(document).ready(function() {
+            Codeforces.focusOnError();
+        });
+    </script>
+</div>
+</body>
+</html>
+<!-- /Page: ContestsPage.ftl -->
