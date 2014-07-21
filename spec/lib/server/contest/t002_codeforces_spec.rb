@@ -57,6 +57,32 @@ module Server
         end
       end
 
+      describe '003: Get contest list.3' do
+        # Fake Codeforces Contests
+        before do
+          response_body = read_file_from_mock("/mock/codeforces_com_contests_20140721.html")
+          stub_request(:get, 'http://codeforces.com/contests?locale=en').to_return({
+            :status => 200,
+            :headers => {
+              'Content-Type' => 'text/html',
+            },
+            :body => response_body,
+          })
+        end
+
+        it '001: Duplicate' do
+          ret = Codeforces::get_contest_list()
+          ret.length.should == 2
+        end
+
+        it '002: Unique' do
+          ret1 = Codeforces::get_contest_list()
+          ret1.length.should == 2
+          ret2 = Server::get_unique_contest_list(ret1)
+          ret2.length.should == 2
+        end
+      end
+
       describe '003: Time Test.1' do
         # Fake Codeforces Contests
         before do
