@@ -1,0 +1,4 @@
+export.sh
+coverage/
+tmp/
+spec/reports/
