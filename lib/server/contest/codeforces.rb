@@ -19,7 +19,7 @@ module Server
           elements[0].search("*").remove()
           contest["title"] = elements[0].inner_text.strip
           str_date         = elements[1].inner_text.strip
-          date             = DateTime.strptime("#{str_date}", "%m/%d/%Y %H:%M")
+          date             = DateTime.strptime("#{str_date}", "%b/%d/%Y %H:%M")
           date = date.new_offset(Rational(4, 24))
           date -= Rational(4, 24)
           if /PM$/.match(str_date)
