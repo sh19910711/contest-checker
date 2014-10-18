@@ -30,7 +30,7 @@ module Server
               "tag" => "AtCoder",
             }
           else
-            date = DateTime.strptime("#{item.start.date.to_s} JST", "%Y-%m-%d %z")
+            date = DateTime.strptime("#{item.start.date.to_s}", "%Y-%m-%d")
             {
               "title" => item.summary,
               "date" => date,
@@ -48,7 +48,7 @@ module Server
               "tag" => "AtCoder",
             }
           else
-            date = DateTime.strptime("#{item.start.date.to_s} JST", "%Y-%m-%d %z")
+            date = DateTime.strptime("#{item.start.date.to_s}", "%Y-%m-%d")
             {
               "title" => item.summary,
               "date" => date,

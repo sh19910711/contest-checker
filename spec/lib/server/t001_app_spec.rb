@@ -128,7 +128,6 @@ describe 'T001: Routing Test' do
       post '/test_url/fetch', {"token" => "test"}
     end
     it '001: with valid token' do
-      p last_response
       last_response.should be_ok
     end
   end
