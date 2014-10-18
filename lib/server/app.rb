@@ -37,7 +37,7 @@ module Server
 
       post "/#{CHECK_CF_CONTEST_SECRET_URL}/fetch-google-calendar" do
         halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
-        Server::find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
+        Server::find_new_contest_from_calendar(google_api, google_calendar)
         "ok"
       end
     end
@@ -120,8 +120,8 @@ module Server
     find_new_contest_from_contest Contest::Toj
   end
 
-  def find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
-    contest_list = Contest::AtCoder.find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
+  def find_new_contest_from_calendar(google_api, google_calendar)
+    contest_list = Contest::AtCoder.find_new_contest_from_calendar(google_api, google_calendar)
     contest_list.each do |item|
       test_set_data_to_hatena_group_calendar(CHECK_CF_CONTEST_HATENA_GROUP_ID, item)
     end

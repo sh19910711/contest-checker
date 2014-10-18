@@ -6,17 +6,15 @@ module Server
 
     class AtCoder < Base
 
-      def self.get_contest_list(google_api, google_calendar, user_credentials)
+      def self.get_contest_list(google_api, google_calendar)
         # Make an API call.
         result1 = google_api.execute(
           :api_method => google_calendar.events.list,
           :parameters => {'calendarId' => 'atcoder.jp_gqd1dqpjbld3mhfm4q07e4rops@group.calendar.google.com'},
-          :authorization => user_credentials,
         )
         result2 = google_api.execute(
           :api_method => google_calendar.events.list,
           :parameters => {'calendarId' => 'atcoder.jp_drp3qk1qgpb84vcdj418fsbo7k@group.calendar.google.com'},
-          :authorization => user_credentials,
         )
 
         contest_list = []
