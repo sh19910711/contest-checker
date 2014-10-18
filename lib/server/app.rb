@@ -77,7 +77,7 @@ module Server
         redirect user_credentials.authorization_uri.to_s, 303
       end
 
-      post '/fetch/google/calendar' do
+      post '/#{CHECK_CF_CONTEST_SECRET_URL}/fetch-google-calendar' do
         halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
         halt 500 unless user_credentials.access_token
         Server::find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
@@ -110,7 +110,7 @@ module Server
       '20140208'
     end
 
-    post "/#{CHECK_CF_CONTEST_SECRET_URL}" do
+    post "/#{CHECK_CF_CONTEST_SECRET_URL}/fetch" do
       halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
       Server::find_new_contest()
       'OK'
