@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'nokogiri'
 require 'mechanize'
 require 'date'
+require 'time'
 require 'google/api_client'
 
 module Server
@@ -82,7 +83,6 @@ module Server
   def test_set_data_to_hatena_group_calendar(group_id, contest)
     date     = contest["date"]
     return if date < DateTime.now
-    date = date.new_offset("+0900")
     str_date = date.strftime("%H:%M")
     title    = contest["title"]
     tag      = contest["tag"]

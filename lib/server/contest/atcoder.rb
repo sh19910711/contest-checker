@@ -22,6 +22,7 @@ module Server
         list1 = result1.data.items.map do |item|
           unless item.start["dateTime"].nil?
             date = DateTime.parse(item.start.dateTime.to_s)
+            date = (date.to_time + 3600 * 9).to_datetime
             {
               "title" => item.summary,
               "date" => date,
@@ -41,6 +42,7 @@ module Server
         list2 = result2.data.items.map do |item|
           unless item.start["dateTime"].nil?
             date = DateTime.parse(item.start.dateTime.to_s)
+            date = (date.to_time + 3600 * 9).to_datetime
             {
               "title" => item.summary,
               "date" => date,
@@ -52,6 +54,7 @@ module Server
               "title" => item.summary,
               "date" => date,
               "tag" => "AtCoder",
+              "is_date" => true,
             }
           end
         end.to_a
