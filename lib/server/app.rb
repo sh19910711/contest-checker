@@ -82,10 +82,15 @@ module Server
   def test_set_data_to_hatena_group_calendar(group_id, contest)
     date     = contest["date"]
     return if date < DateTime.now
+    date = date.new_offset("+0900")
     str_date = date.strftime("%H:%M")
     title    = contest["title"]
     tag      = contest["tag"]
-    data     = "* #{str_date} #{title}"
+    if contest["is_date"]
+      data     = "* #{title}"
+    else
+      data     = "* #{str_date} #{title}"
+    end
     agent             = Mechanize.new
     agent.user_agent  = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
     agent.verify_mode = OpenSSL::SSL::VERIFY_NONE

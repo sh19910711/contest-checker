@@ -33,6 +33,7 @@ module Server
               "title" => item.summary,
               "date" => date,
               "tag" => "AtCoder",
+              "is_date" => true,
             }
           end
         end.to_a
