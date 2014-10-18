@@ -11,6 +11,7 @@ deploy:
   provider: heroku
   api_key:
     secure: "B5ZeaBUIp56U9voj0svMH2zt3cwVK+Rvy1UsnD8S2Kohj+pdyUTjlul2R0pKASPZUQsQfIeo70SIk/dfCOQfMHaG1KdTV7ajrz0X+RuOWHpDqFW97fAnSE1T8VwBxrEeM/32IzUIV9wCFmuNew6ZfzUJroMgwC4i8aBSKt5aDQM="
+  strategy: api
   app:
     master: cf-contest-check-334
     develop: test-cf-contest-check-334
