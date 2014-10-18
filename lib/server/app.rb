@@ -29,12 +29,18 @@ module Server
         client = Google::APIClient.new(
           :application_name => 'Contest Checker',
         )
-        client.authorization.client_id = ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_ID"]
-        client.authorization.client_secret = ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_SECRET"]
-        client.authorization.scope = [
-          'https://www.googleapis.com/auth/userinfo.email',
-          'https://www.googleapis.com/auth/calendar.readonly',
-        ]
+        client_key = OpenSSL::PKey::RSA.new(ENV['CHECK_CF_CONTEST_GOOGLE_KEY'])
+        client.authorization = Signet::OAuth2::Client.new(
+          :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+          :audience             => 'https://accounts.google.com/o/oauth2/token',
+          :scope                => [
+            'https://www.googleapis.com/auth/userinfo.email',
+            'https://www.googleapis.com/auth/calendar.readonly',
+          ],
+          :issuer               => ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_ID"],
+          :signing_key          => client_key,
+        )
+        client.authorization.fetch_access_token!
         set :google_api, client
 
         calendar = google_api.discovered_api('calendar', 'v3')
