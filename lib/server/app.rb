@@ -1,11 +1,111 @@
 require 'server/common'
 require 'sinatra/base'
+require 'sinatra/reloader'
 require 'nokogiri'
 require 'mechanize'
 require 'date'
+require 'google/api_client'
 
 module Server
   class App < Sinatra::Base
+    configure :devleopment do
+      register Sinatra::Reloader
+    end
+
+    configure do
+      enable :sessions
+
+      def google_calendar; settings.google_calendar; end
+      def google_api; settings.google_api; end
+
+      def user_credentials
+        # Build a per-request oauth credential based on token stored in session
+        # which allows us to use a shared API client.
+        @authorization ||= (
+          auth = google_api.authorization.dup
+          auth.redirect_uri = to('/google/login/callback')
+          auth.update_token!(session[:google_api] || {})
+          auth
+        )
+      end
+
+      configure do
+        client = Google::APIClient.new(
+          :application_name => 'Contest Checker',
+        )
+        client.authorization.client_id = ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_ID"]
+        client.authorization.client_secret = ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_SECRET"]
+        client.authorization.scope = [
+          'https://www.googleapis.com/auth/userinfo.email',
+          'https://www.googleapis.com/auth/calendar.readonly',
+        ]
+        set :google_api, client
+
+        calendar = google_api.discovered_api('calendar', 'v3')
+        set :google_calendar, calendar
+      end
+
+      get '/google/login/callback' do
+        halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != session[:check_token]
+
+        user_credentials.code = params[:code] if params[:code]
+        user_credentials.fetch_access_token!
+        session[:google_api] = {}
+        session[:google_api][:access_token] = user_credentials.access_token
+        session[:google_api][:refresh_token] = user_credentials.refresh_token
+        session[:google_api][:expires_in] = user_credentials.expires_in
+        session[:google_api][:issued_at] = user_credentials.issued_at
+
+        result = google_api.execute(
+          :api_method => google_api.discovered_api('oauth2', 'v2').userinfo.get,
+          :authorization => user_credentials,
+        )
+
+        session[:google_api][:user_id] = result.data.id
+
+        if session[:google_api][:user_id] != ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_USER"]
+          user_credentials = nil
+          raise "error"
+        end
+
+        redirect to('/hello')
+      end
+
+      post '/google/login' do
+        halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
+        session[:check_token] = params[:token]
+        redirect user_credentials.authorization_uri.to_s, 303
+      end
+
+      post '/fetch/google/calendar' do
+        halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
+        halt 500 unless user_credentials.access_token
+        Server::find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
+        "ok"
+      end
+    end
+
+    configure :development do
+
+      get '/fetch/google/calendar' do
+        [
+          '<form action="" method="post">',
+          '<input type="text" name="token" value="">',
+          '</form>',
+        ].join("")
+      end
+
+      get '/google/whoami' do
+        session[:google_api][:user_id]
+      end
+
+      get '/hello' do
+        unless user_credentials.access_token
+          return "<form method='post' action='/google/login'><input type='text' name='token'></form>"
+        end
+      end
+    end
+
     get '/version' do
       '20140208'
     end
@@ -71,5 +171,13 @@ module Server
     find_new_contest_from_contest Contest::Uva
     find_new_contest_from_contest Contest::Toj
   end
+
+  def find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
+    contest_list = Contest::AtCoder.find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
+    contest_list.each do |item|
+      test_set_data_to_hatena_group_calendar(CHECK_CF_CONTEST_HATENA_GROUP_ID, item)
+    end
+  end
+
 end
 
