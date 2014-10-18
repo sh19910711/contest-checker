@@ -21,7 +21,7 @@ module Server
 
         list1 = result1.data.items.map do |item|
           unless item.start["dateTime"].nil?
-            date = DateTime.parse(item.start.dateTime.to_s)
+            date = DateTime.parse(item.start["dateTime"].to_s)
             date = (date.to_time + 3600 * 9).to_datetime
             {
               "title" => item.summary,
@@ -29,7 +29,7 @@ module Server
               "tag" => "AtCoder",
             }
           else
-            date = DateTime.strptime("#{item.start.date.to_s}", "%Y-%m-%d")
+            date = DateTime.strptime("#{item.start["date"].to_s}", "%Y-%m-%d")
             {
               "title" => item.summary,
               "date" => date,
@@ -41,7 +41,7 @@ module Server
 
         list2 = result2.data.items.map do |item|
           unless item.start["dateTime"].nil?
-            date = DateTime.parse(item.start.dateTime.to_s)
+            date = DateTime.parse(item.start["dateTime"].to_s)
             date = (date.to_time + 3600 * 9).to_datetime
             {
               "title" => item.summary,
@@ -49,7 +49,7 @@ module Server
               "tag" => "AtCoder",
             }
           else
-            date = DateTime.strptime("#{item.start.date.to_s}", "%Y-%m-%d")
+            date = DateTime.strptime("#{item.start["date"].to_s}", "%Y-%m-%d")
             {
               "title" => item.summary,
               "date" => date,
