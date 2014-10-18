@@ -9,21 +9,9 @@ module Server
   class App < Sinatra::Base
 
     configure :production, :development do
-      enable :sessions
 
       def google_calendar; settings.google_calendar; end
       def google_api; settings.google_api; end
-
-      def user_credentials
-        # Build a per-request oauth credential based on token stored in session
-        # which allows us to use a shared API client.
-        @authorization ||= (
-          auth = google_api.authorization.dup
-          auth.redirect_uri = to('/google/login/callback')
-          auth.update_token!(session[:google_api] || {})
-          auth
-        )
-      end
 
       configure do
         client = Google::APIClient.new(
@@ -47,41 +35,8 @@ module Server
         set :google_calendar, calendar
       end
 
-      get '/google/login/callback' do
-        halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != session[:check_token]
-
-        user_credentials.code = params[:code] if params[:code]
-        user_credentials.fetch_access_token!
-        session[:google_api] = {}
-        session[:google_api][:access_token] = user_credentials.access_token
-        session[:google_api][:refresh_token] = user_credentials.refresh_token
-        session[:google_api][:expires_in] = user_credentials.expires_in
-        session[:google_api][:issued_at] = user_credentials.issued_at
-
-        result = google_api.execute(
-          :api_method => google_api.discovered_api('oauth2', 'v2').userinfo.get,
-          :authorization => user_credentials,
-        )
-
-        session[:google_api][:user_id] = result.data.id
-
-        if session[:google_api][:user_id] != ENV["CHECK_CF_CONTEST_GOOGLE_CLIENT_USER"]
-          user_credentials = nil
-          raise "error"
-        end
-
-        redirect to('/hello')
-      end
-
-      post '/google/login' do
-        halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
-        session[:check_token] = params[:token]
-        redirect user_credentials.authorization_uri.to_s, 303
-      end
-
       post "/#{CHECK_CF_CONTEST_SECRET_URL}/fetch-google-calendar" do
         halt 403 if CHECK_CF_CONTEST_SECRET_TOKEN != params[:token]
-        halt 500 unless user_credentials.access_token
         Server::find_new_contest_from_calendar(google_api, google_calendar, user_credentials)
         "ok"
       end
@@ -97,15 +52,6 @@ module Server
         ].join("")
       end
 
-      get '/google/whoami' do
-        session[:google_api][:user_id]
-      end
-
-      get '/hello' do
-        unless user_credentials.access_token
-          return "<form method='post' action='/google/login'><input type='text' name='token'></form>"
-        end
-      end
     end
 
     get '/version' do
