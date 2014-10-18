@@ -6,7 +6,6 @@ group :production, :development do
   gem 'mechanize'
   gem 'nokogiri'
   gem 'sinatra'
-  gem 'sinatra-contrib'
   gem 'google-api-client'
 end
 

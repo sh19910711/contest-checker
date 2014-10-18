@@ -1,6 +1,5 @@
 require 'server/common'
 require 'sinatra/base'
-require 'sinatra/reloader'
 require 'nokogiri'
 require 'mechanize'
 require 'date'
@@ -8,9 +7,6 @@ require 'google/api_client'
 
 module Server
   class App < Sinatra::Base
-    configure :devleopment do
-      register Sinatra::Reloader
-    end
 
     configure :production, :development do
       enable :sessions
