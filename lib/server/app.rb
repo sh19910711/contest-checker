@@ -12,7 +12,7 @@ module Server
       register Sinatra::Reloader
     end
 
-    configure do
+    configure :production, :development do
       enable :sessions
 
       def google_calendar; settings.google_calendar; end
