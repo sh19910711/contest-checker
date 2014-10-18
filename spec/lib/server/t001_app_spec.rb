@@ -123,27 +123,27 @@ describe 'T001: Routing Test' do
     Server::App.new
   end
 
-  describe '001: POST /test' do
+  describe '001: POST /test_url/fetch' do
     before do
-      post '/test', {"token" => "test"}
+      post '/test_url/fetch', {"token" => "test"}
     end
     it '001: with valid token' do
       last_response.should be_ok
     end
   end
 
-  describe '002: POST /test' do
+  describe '002: POST /test_url/fetch' do
     before do
-      post '/test', {"token" => "test2"}
+      post '/test_url/fetch', {"token" => "test2"}
     end
     it '001: with invalid token' do
       last_response.should_not be_ok
     end
   end
 
-  describe '003: POST /test' do
+  describe '003: POST /test_url/fetch' do
     before do
-      post '/test', {"token" => "1test"}
+      post '/test_url/fetch', {"token" => "1test"}
     end
     it '001: with invalid token' do
       last_response.should_not be_ok

@@ -3,6 +3,7 @@ require 'server/contest/codeforces'
 require 'server/contest/uva'
 require 'server/contest/codechef'
 require 'server/contest/toj'
+require 'server/contest/atcoder'
 
 module Server
   CHECK_CF_CONTEST_HATENA_USER_ID       = ENV['CHECK_CF_CONTEST_HATENA_USER_ID']
@@ -50,9 +51,13 @@ module Server
   # はてなグループのカレンダー用のテキストを取得する
   def get_contest_line(contest)
     date     = contest["date"]
-    str_date = date.strftime("%H:%M")
     title    = contest["title"]
     tag      = contest["tag"]
-    title.include?(tag) ?  "* #{str_date} #{title}" : "* #{str_date} [#{tag}] #{title}"
+    if contest["is_date"]
+      str_date = ""
+    else
+      str_date = "#{date.strftime("%H:%M")} "
+    end
+    title.include?(tag) ?  "* #{str_date}#{title}" : "* #{str_date}[#{tag}] #{title}"
   end
 end

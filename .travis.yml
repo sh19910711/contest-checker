@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.1.3
 bundler_args:
+install:
+  - export NOKOGIRI_USE_SYSTEM_LIBRARIES="YES"
 script:
   - bundle install
   - bundle exec rake spec

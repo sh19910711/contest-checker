@@ -4,6 +4,17 @@ require 'server/app'
 module Server
   describe 'T005: Server::get_contest_line' do
     describe '001: No tag cases' do
+      it "is_date" do
+        date = Time.new
+        date_text = date.strftime('%H:%M')
+        ret = Server::get_contest_line(
+          "title" => "Title",
+          "tag" => "Tag",
+          "date" => date,
+          "is_date" => true,
+        )
+        ret.should == "* [Tag] Title"
+      end
       it '001' do
         date = Time.new
         date_text = date.strftime('%H:%M')
