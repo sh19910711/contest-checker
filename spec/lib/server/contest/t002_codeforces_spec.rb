@@ -15,7 +15,7 @@ module Server
         context "parse_time" do
           it { expect_time "Nov/10/2014 19:30", "2014-11-11T01:30JST" }
           it { expect_time "Nov/21/2014 19:30", "2014-11-22T01:30JST" }
-          it { expect_time "Sep/30/2013 12:45", "2013-09-30T17:45JST" }
+          it { expect_time "Nov/30/2014 12:45", "2014-11-30T18:45JST" }
         end
       end
 

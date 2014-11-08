@@ -10,7 +10,11 @@ module Server
       end
 
       def self.parse_time(s)
-        time_parser.parse(s)
+        date = time_parser.parse(s)
+        if date.utc_offset != 10800
+          date = date.ago(-1.hours) # TODO: fix
+        end
+        date
       end
 
       # Codeforcesのコンテストリストを取得する
