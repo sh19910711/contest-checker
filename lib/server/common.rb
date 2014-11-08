@@ -56,7 +56,7 @@ module Server
     if contest["is_date"]
       str_date = ""
     else
-      str_date = "#{date.strftime("%H:%M")} "
+      str_date = "#{date.in_time_zone("Tokyo").strftime("%H:%M")} "
     end
     title.include?(tag) ?  "* #{str_date}#{title}" : "* #{str_date}[#{tag}] #{title}"
   end

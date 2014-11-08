@@ -13,7 +13,6 @@ require 'simplecov'
 require 'simplecov-rcov'
 require 'rubygems'
 require 'spork'
-require 'byebug'
 
 def read_file_from_mock(path)
   File.read(File.dirname(__FILE__) + path)
@@ -53,5 +52,4 @@ Spork.each_run do
     require 'simplecov'
   end
 end
-
 
