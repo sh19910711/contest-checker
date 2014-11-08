@@ -84,7 +84,7 @@ module Server
     date     = contest["date"]
     return if date < DateTime.now
     p "add: #{contest}"
-    str_date = date.strftime("%H:%M")
+    str_date = date.in_time_zone("Asia/Tokyo").strftime("%H:%M")
     title    = contest["title"]
     tag      = contest["tag"]
     if contest["is_date"]
