@@ -56,7 +56,7 @@ module Server
     end
 
     get '/version' do
-      '20140208'
+      '20141108'
     end
 
     post "/#{CHECK_CF_CONTEST_SECRET_URL}/fetch" do
