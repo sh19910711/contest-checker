@@ -118,7 +118,11 @@ module Server
   end
 
   def get_str_date(date)
-    date.in_time_zone("Asia/Tokyo").strftime("%H:%M")
+    p "zone = #{date.zone}"
+    p "Moscow: ", date.in_time_zone("Moscow")
+    p "Tokyo: ", date.in_time_zone("Tokyo")
+    p "Asia/Tokyo: ", date.in_time_zone("Asia/Tokyo")
+    date.in_time_zone("Tokyo").strftime("%H:%M")
   end
 
   def find_new_contest_from_contest(contest)
