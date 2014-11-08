@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 require 'server/app'
+require "server/contest/codeforces"
 
 describe 'T001: Routing Test' do
   include Rack::Test::Methods
@@ -148,5 +149,11 @@ describe 'T001: Routing Test' do
     it '001: with invalid token' do
       last_response.should_not be_ok
     end
+  end
+
+  describe "get_str_date" do
+
+    it { expect(Server.get_str_date(Server::Contest::Codeforces.parse_time("Nov/21/2014 19:30"))).to eq "01:30" }
+
   end
 end

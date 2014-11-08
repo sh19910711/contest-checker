@@ -84,7 +84,9 @@ module Server
     date     = contest["date"]
     return if date < DateTime.now
     p "add: #{contest}"
-    str_date = date.in_time_zone("Asia/Tokyo").strftime("%H:%M")
+    keyword_date = get_keyword_date(date)
+    str_date = get_str_date(date)
+    p "-- date: #{keyword_date}, #{str_date}"
     title    = contest["title"]
     tag      = contest["tag"]
     if contest["is_date"]
@@ -102,7 +104,7 @@ module Server
       form["password"] = CHECK_CF_CONTEST_HATENA_USER_PASSWORD
     end.submit
     # 追加済みのデータがあるときは何もしない
-    target_url = "https://#{group_id}.g.hatena.ne.jp/keyword/#{date.strftime("%Y-%m-%d")}?mode=edit"
+    target_url = "https://#{group_id}.g.hatena.ne.jp/keyword/#{keyword_date}?mode=edit"
     agent.get(target_url).form_with(:name => 'edit') do |form|
       next unless form
       break if form["body"].include?(title)
@@ -111,6 +113,13 @@ module Server
     end
   end
 
+  def get_keyword_date(date)
+    date.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d")
+  end
+
+  def get_str_date(date)
+    date.in_time_zone("Asia/Tokyo").strftime("%H:%M")
+  end
 
   def find_new_contest_from_contest(contest)
     contest_list = contest.find_new_contest
