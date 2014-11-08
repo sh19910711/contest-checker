@@ -2,3 +2,4 @@ export.sh
 coverage/
 tmp/
 spec/reports/
+.bundle/
