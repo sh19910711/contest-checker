@@ -86,7 +86,6 @@ module Server
     p "add: #{contest}"
     keyword_date = get_keyword_date(date)
     str_date = get_str_date(date)
-    p "-- date: #{keyword_date}, #{str_date}"
     title    = contest["title"]
     tag      = contest["tag"]
     if contest["is_date"]
@@ -118,10 +117,6 @@ module Server
   end
 
   def get_str_date(date)
-    p "zone = #{date.zone}"
-    p "Moscow: ", date.in_time_zone("Moscow")
-    p "Tokyo: ", date.in_time_zone("Tokyo")
-    p "Asia/Tokyo: ", date.in_time_zone("Asia/Tokyo")
     date.in_time_zone("Tokyo").strftime("%H:%M")
   end
 
