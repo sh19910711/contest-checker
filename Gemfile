@@ -20,11 +20,7 @@ group :test do
   gem 'rspec', :require => false
   gem 'rack-test', require: 'rack/test'
   gem 'webmock', :require => false
-
-  gem 'spork', :require => false
-  gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
-  gem 'ci_reporter', :require => false
+  gem 'codeclimate-test-reporter', :require => false
 end
 
 group :debug do
