@@ -1,14 +1,19 @@
 language: ruby
+
 rvm:
-  - 2.1.4
-bundler_args:
+  - "2.2.0"
+
+sudo: false
+
+before_install:
+  - bundle config build.nokogiri --use-system-libraries
+
 install:
-  - export NOKOGIRI_USE_SYSTEM_LIBRARIES="YES"
+  - travis_retry bundle install --jobs 4 --path vendor/bundle
+
 script:
-  - bundle install
   - bundle exec rake spec
-gemfile:
-  - Gemfile
+
 deploy:
   provider: heroku
   api_key:
