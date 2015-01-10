@@ -132,6 +132,7 @@ module Server
     find_new_contest_from_contest Contest::Codechef
     find_new_contest_from_contest Contest::Uva
     find_new_contest_from_contest Contest::Toj
+    find_new_contest_from_contest Contest::HackerRank
   end
 
   def find_new_contest_from_calendar(google_api, google_calendar)

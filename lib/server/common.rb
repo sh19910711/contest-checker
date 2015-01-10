@@ -4,6 +4,7 @@ require 'server/contest/uva'
 require 'server/contest/codechef'
 require 'server/contest/toj'
 require 'server/contest/atcoder'
+require "server/contest/hackerrank"
 
 module Server
   CHECK_CF_CONTEST_HATENA_USER_ID       = ENV['CHECK_CF_CONTEST_HATENA_USER_ID']
