@@ -8,6 +8,7 @@ group :production, :development do
   gem 'sinatra', :require => false
   gem 'google-api-client', :require => false
   gem 'activesupport', :require => false
+  gem 'simple-rss', :require => false
 end
 
 group :development do

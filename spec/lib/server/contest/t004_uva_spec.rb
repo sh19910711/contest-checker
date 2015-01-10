@@ -6,7 +6,7 @@ module Server
       # Fake UVa Contests
       before do
         response_body = read_file_from_mock("/mock/uva_contest.html")
-        stub_request(:get, 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=12').to_return({
+        WebMock.stub_request(:get, 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=12').to_return({
           :status => 200,
           :headers => {
             'Content-Type' => 'text/html',
@@ -30,7 +30,7 @@ module Server
         # Fake UVa Contests
         before do
           response_body = read_file_from_mock("/mock/t004_002.html")
-          stub_request(:get, 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=12').to_return({
+          WebMock.stub_request(:get, 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=12').to_return({
             :status => 200,
             :headers => {
               'Content-Type' => 'text/html',
