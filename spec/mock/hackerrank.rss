@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Events</title>
+    <description>Events</description>
+    <link>https://www.hackerrank.com</link>
+    <item>
+      <title>Codechef - January Cook-Off 2016</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK65</url>
+      <startTime>2016-01-24 16:00:00 UTC</startTime>
+      <endTime>2016-01-24 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - January Challenge 2016</title>
+      <description></description>
+      <url>http://www.codechef.com/JAN16</url>
+      <startTime>2016-01-01 09:30:00 UTC</startTime>
+      <endTime>2016-01-11 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - December Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK64</url>
+      <startTime>2015-12-20 16:00:00 UTC</startTime>
+      <endTime>2015-12-20 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - December Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/DEC15</url>
+      <startTime>2015-12-04 09:30:00 UTC</startTime>
+      <endTime>2015-12-14 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - November Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK63</url>
+      <startTime>2015-11-22 16:00:00 UTC</startTime>
+      <endTime>2015-11-22 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - November Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/NOV15</url>
+      <startTime>2015-11-06 09:30:00 UTC</startTime>
+      <endTime>2015-11-16 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - October Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK62</url>
+      <startTime>2015-10-18 16:00:00 UTC</startTime>
+      <endTime>2015-10-18 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - October Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/OCT15</url>
+      <startTime>2015-10-02 09:30:00 UTC</startTime>
+      <endTime>2015-10-12 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - September Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK61</url>
+      <startTime>2015-09-20 16:00:00 UTC</startTime>
+      <endTime>2015-09-20 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - September Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/SEPT15</url>
+      <startTime>2015-09-04 09:30:00 UTC</startTime>
+      <endTime>2015-09-14 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - August Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK60</url>
+      <startTime>2015-08-23 16:00:00 UTC</startTime>
+      <endTime>2015-08-23 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - August Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/AUG15</url>
+      <startTime>2015-08-07 09:30:00 UTC</startTime>
+      <endTime>2015-08-17 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - July Cook-Off 2014</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK59</url>
+      <startTime>2015-07-19 16:00:00 UTC</startTime>
+      <endTime>2015-07-19 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - July Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/JUN15</url>
+      <startTime>2015-07-03 09:30:00 UTC</startTime>
+      <endTime>2015-07-13 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - June Cook-Off 2014</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK58</url>
+      <startTime>2015-06-21 16:00:00 UTC</startTime>
+      <endTime>2015-06-21 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - June Challenge 2015</title>
+      <description></description>
+      <url/>
+      <startTime>2015-06-05 09:30:00 UTC</startTime>
+      <endTime>2015-06-15 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - May Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK57</url>
+      <startTime>2015-05-24 00:00:00 UTC</startTime>
+      <endTime>2015-05-26 00:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - May Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/MAY15</url>
+      <startTime>2015-05-01 09:30:00 UTC</startTime>
+      <endTime>2015-05-11 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - April Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK56</url>
+      <startTime>2015-04-19 16:00:00 UTC</startTime>
+      <endTime>2015-04-19 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - April Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/APR15</url>
+      <startTime>2015-04-03 09:30:00 UTC</startTime>
+      <endTime>2015-04-13 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - March Lunchtime 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/LTIME22</url>
+      <startTime>2015-03-29 05:30:00 UTC</startTime>
+      <endTime>2015-03-29 08:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 654</title>
+      <description>SRM 654</description>
+      <url/>
+      <startTime>2015-03-26 01:00:00 UTC</startTime>
+      <endTime>2015-03-26 03:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - March Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK56</url>
+      <startTime>2015-03-22 16:00:00 UTC</startTime>
+      <endTime>2015-03-22 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 653</title>
+      <description>SRM 653</description>
+      <url/>
+      <startTime>2015-03-17 11:00:00 UTC</startTime>
+      <endTime>2015-03-17 13:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 652</title>
+      <description>SRM 652</description>
+      <url/>
+      <startTime>2015-03-09 15:00:00 UTC</startTime>
+      <endTime>2015-03-09 17:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - March Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/MAR15</url>
+      <startTime>2015-03-06 09:30:00 UTC</startTime>
+      <endTime>2015-03-16 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 651</title>
+      <description>SRM 651</description>
+      <url/>
+      <startTime>2015-02-28 17:00:00 UTC</startTime>
+      <endTime>2015-02-28 19:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - February Lunchtime 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/LTIME21</url>
+      <startTime>2015-02-22 05:30:00 UTC</startTime>
+      <endTime>2015-02-22 08:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 650</title>
+      <description>SRM 650</description>
+      <url/>
+      <startTime>2015-02-18 02:00:00 UTC</startTime>
+      <endTime>2015-02-18 04:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - February Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK55</url>
+      <startTime>2015-02-15 16:00:00 UTC</startTime>
+      <endTime>2015-02-15 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Zeitgeist Code War</title>
+      <description>__This is a open contest by University College of Engineering,JNTU Kakinada.__
+
+Details will be updated soon
+</description>
+      <url>http://www.hackerrank.com/contests/zeitgeist-code-war/</url>
+      <startTime>2015-02-12 12:30:00 UTC</startTime>
+      <endTime>2015-02-12 18:15:00 UTC</endTime>
+    </item>
+    <item>
+      <title>101 Hack November'14</title>
+      <description></description>
+      <url>https://www.hackerrank.com/contests/101hack19/challenges</url>
+      <startTime>2015-02-12 12:30:00 UTC</startTime>
+      <endTime>2015-02-12 18:15:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 649</title>
+      <description>SRM 649</description>
+      <url/>
+      <startTime>2015-02-10 16:00:00 UTC</startTime>
+      <endTime>2015-02-10 18:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - February Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/FEB15</url>
+      <startTime>2015-02-06 09:30:00 UTC</startTime>
+      <endTime>2015-02-16 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 648</title>
+      <description>SRM 648</description>
+      <url/>
+      <startTime>2015-02-02 12:00:00 UTC</startTime>
+      <endTime>2015-02-02 14:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - January Lunchtime 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/LTIME20</url>
+      <startTime>2015-01-25 05:30:00 UTC</startTime>
+      <endTime>2015-01-25 09:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 647</title>
+      <description>SRM 647</description>
+      <url>http://community.topcoder.com/tc?module=MatchDetails&amp;rd=16279</url>
+      <startTime>2015-01-24 17:00:00 UTC</startTime>
+      <endTime>2015-01-24 19:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>CodeAgon</title>
+      <description/>
+      <url>http://www.hackerrank.com/contests/codeagon/</url>
+      <startTime>2015-01-24 15:30:00 UTC</startTime>
+      <endTime>2015-01-24 18:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Ashwamedha 2.0</title>
+      <description>Ready to flex your coding muscles and to fight with all you got on the arena?Beware! The arena is not for weak souls, the rule of the jungle favors the strongest. Get ready this January with your arsenal filled to fight in the second edition of the epic war with code.
+
+https://www.hackerrank.com/ashwamedhav2
+
+##Partners
+![Colloquium 2015](http://webazzaar.com/col15/dh/logo.png)
+![MCET IEEE Student Branch](http://webazzaar.com/col15/dh/ieee.png)
+![HackerRank](http://webazzaar.com/col15/dh/hr2.png)
+
+##Rules
+
+Participation can be individual or as a team of maximum two.&lt;br&gt;&lt;br&gt;
+Duration of the contest is 24 hours.&lt;br&gt;&lt;br&gt;
+Please do not discuss strategy, suggestions or tips in the comments during a live contest. Posting questions clarifying the problem statement is ok.&lt;br&gt;&lt;br&gt;
+Judge's decision will be treated as final. No correspondence in this regard will be entertained.&lt;br&gt;&lt;br&gt;
+Any type of plagarism activity during the contest will not be tolerated.&lt;br&gt;&lt;br&gt;
+Top ten teams will be selected from the online finals to onsite finals where participants have to come to Mohandas College of Engg. &amp; Tech. , Thiruvananthapuram.&lt;br&gt;&lt;br&gt;
+
+##Prizes
+
+A CASH PRIZE of total INR 10000 along with the certificate of appreciation shall be given to the top 3 teams.&lt;br&gt;&lt;br&gt;
+All Indian Under Graduate participants are eligible for the prizes.&lt;br&gt;&lt;br&gt;
+
+##Making A Team
+
+Each participant can register individually. But once the contest starts, their submission will be counted to the team they belong. To create a team, one of the user (who is also the team head) has to go to www.hackerrank.com/settings and click on Teams in the left side bar. Then, click on create team. Create a new team and invite members. Ask the other members to confirm by going to www.hackerrank.com/settings.&lt;br&gt;&lt;br&gt;
+
+That's all! Once the contest starts, you can submit code from any one of the account and it will be counted as a team submission.&lt;br&gt;&lt;br&gt;
+
+##Judging
+
+Every question is alloted 100 marks irrespective of difficulty.&lt;br&gt;&lt;br&gt;
+Participants are ranked according to the most problems solved. Ties will be broken by the total time for each team in ascending order of time.&lt;br&gt;&lt;br&gt;
+The total time is the sum of the time consumed for each problem solved. The time consumed for a solved problem is the time elapsed from the beginning of the contest to the submittal of the first accepted run plus 10 penalty minutes for every previously rejected run for that problem. There is no time consumed for a problem that is not solved.&lt;br&gt;&lt;br&gt;
+
+##Contact
+For any queries, contact&lt;br&gt;
+Dhanith Krishna&lt;br&gt;
+dhanithkrishna13(at)gmail(dot)com
+</description>
+      <url>http://www.hackerrank.com/contests/ashwamedhav2/</url>
+      <startTime>2015-01-21 18:30:00 UTC</startTime>
+      <endTime>2015-01-23 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - January Cook-Off 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/COOK54</url>
+      <startTime>2015-01-18 16:00:00 UTC</startTime>
+      <endTime>2015-01-18 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 646</title>
+      <description>SRM 646</description>
+      <url>http://community.topcoder.com/tc?module=MatchDetails&amp;rd=16278</url>
+      <startTime>2015-01-16 02:00:00 UTC</startTime>
+      <endTime>2015-01-16 04:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Topcoder - SRM 645</title>
+      <description>SRM 645</description>
+      <url>http://community.topcoder.com/tc?module=MatchDetails&amp;rd=16277</url>
+      <startTime>2015-01-12 16:00:00 UTC</startTime>
+      <endTime>2015-01-12 18:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codeforces Round #285 (Div. 2)</title>
+      <description>Codeforces Round #285 (Div. 2)</description>
+      <url>http://codeforces.com/contests</url>
+      <startTime>2015-01-12 09:00:00 UTC</startTime>
+      <endTime>2015-01-12 11:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codeforces Round #285 (Div. 1)</title>
+      <description>Codeforces Round #285 (Div. 1)</description>
+      <url>http://codeforces.com/contests</url>
+      <startTime>2015-01-12 09:00:00 UTC</startTime>
+      <endTime>2015-01-12 11:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>URIOJ - Contest Sigma</title>
+      <description>Contest Sigma</description>
+      <url>https://www.urionlinejudge.com.br</url>
+      <startTime>2015-01-10 16:00:00 UTC</startTime>
+      <endTime>2015-01-10 18:30:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Weekly Challenges - Week 13</title>
+      <description/>
+      <url>http://www.hackerrank.com/contests/w13/</url>
+      <startTime>2015-01-05 16:00:00 UTC</startTime>
+      <endTime>2015-01-11 18:29:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Codechef - January Challenge 2015</title>
+      <description></description>
+      <url>http://www.codechef.com/JAN15</url>
+      <startTime>2015-01-02 00:00:00 UTC</startTime>
+      <endTime>2015-01-13 00:00:00 UTC</endTime>
+    </item>
+    <item>
+      <title>Code Dash </title>
+      <description>**Hi code crackers**,
+
+
+Interface CIT welcomes you to Code Dash  by Department of Computer Science.       
+
+Every week a set  of questions will be posted.(Every Friday 8 pm)
+
+The cumulative score will be taken on january 23rd.
+                                                              
+Prizes:                  
+The top three winners : FREE entry pass for workshops (either Big Data or Ethical hacking) and events.            
+First 100 Places : Special prizes await.            
+
+
+
+
+REGISTER @ M.interfacecit.com/codedash.php
+
+
+  * The registered participants will be provided  certificate of participation (atleast 5 questions should be answered and submitted).</description>
+      <url>http://www.hackerrank.com/contests/interfacecse-codedash/</url>
+      <startTime>2014-12-19 14:30:00 UTC</startTime>
+      <endTime>2015-01-23 14:30:00 UTC</endTime>
+    </item>
+  </channel>
+</rss>
