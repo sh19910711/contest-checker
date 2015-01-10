@@ -3,6 +3,14 @@ require 'server/contest/common'
 module Server
   module Contest
     class Codechef < Base
+
+      def self.filter_contest(title)
+        return true if /Challenge\s*[0-9]+/ === title
+        return true if /Cook-Off\s*[0-9]+/ === title
+        return true if /Lunchtime\s*[0-9]+/ === title
+        false
+      end
+
       # Codechefのコンテストリストを取得する
       def self.get_contest_list()
         agent            = Mechanize.new
@@ -27,6 +35,8 @@ module Server
           contest["tag"] = "CodeChef"
           contest_list.push contest
         end
+
+        contest_list.select! {|contest| filter_contest contest["title"] }
 
         contest_list
       end
