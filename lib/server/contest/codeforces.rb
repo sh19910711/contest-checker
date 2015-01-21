@@ -36,7 +36,29 @@ module Server
           contest["tag"]    = "Codeforces"
           contest_list.push(contest)
         end
-        return contest_list
+        return self.filter_div12(contest_list)
+      end
+
+      def self.filter_div12(list)
+        div = {}
+        list.each do |contest|
+          title = contest["title"].gsub(/\(.*?\)/, "").strip
+          div[title] ||= {}
+          divname = contest["title"].match(/\((.*?)\)/)[1].strip
+          div[title][divname] = true
+        end
+        list.select do |contest|
+          title = contest["title"].gsub(/\(.*?\)/, "").strip
+          if div[title]["Div. 1"] && div[title]["Div. 2"]
+            if /Div\. 1/ === contest["title"]
+              contest["title"] = title
+            else
+              false
+            end
+          else
+            true
+          end
+        end
       end
     end
   end
