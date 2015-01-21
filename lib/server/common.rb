@@ -13,6 +13,8 @@ module Server
   CHECK_CF_CONTEST_SECRET_URL           = ENV['CHECK_CF_CONTEST_SECRET_URL']
   CHECK_CF_CONTEST_SECRET_TOKEN         = ENV['CHECK_CF_CONTEST_SECRET_TOKEN']
 
+  module_function
+
   # 重複するコンテスト（Div.1 Div.2など）を一つにまとめる処理
   def get_unique_contest_list(contest_list)
     pass_list = Hash.new
