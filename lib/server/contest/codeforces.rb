@@ -44,8 +44,10 @@ module Server
         list.each do |contest|
           title = contest["title"].gsub(/\(.*?\)/, "").strip
           div[title] ||= {}
-          divname = contest["title"].match(/\((.*?)\)/)[1].strip
-          div[title][divname] = true
+          if /\((.*?)\)/ === contest["title"]
+            divname = contest["title"].match(/\((.*?)\)/)[1].strip
+            div[title][divname] = true
+          end
         end
         list.select do |contest|
           title = contest["title"].gsub(/\(.*?\)/, "").strip
