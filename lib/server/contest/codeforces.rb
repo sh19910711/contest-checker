@@ -22,7 +22,7 @@ module Server
         agent = Mechanize.new
         agent.user_agent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
         contest_list_url = "http://codeforces.com/contests"
-        page = agent.get(contest_list_url, {:locale => 'en'})
+        page = agent.get(contest_list_url, {:complete => true, :locale => 'en'})
         doc = Nokogiri::HTML(page.body)
         element = doc.xpath('//div[@class="contestList"]//div[@class="datatable"]').first
         contest_list = []
