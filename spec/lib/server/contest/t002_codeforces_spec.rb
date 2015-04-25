@@ -22,7 +22,7 @@ module Server
       describe '001: Get contest list.1' do
         before do
           response_body = read_file_from_mock("/mock/codeforces-20150121.html")
-          WebMock.stub_request(:get, 'http://codeforces.com/contests?locale=en').to_return({
+          WebMock.stub_request(:get, 'http://codeforces.com/contests?complete=true&locale=en').to_return({
             :status => 200,
             :headers => {
               'Content-Type' => 'text/html',
@@ -46,7 +46,7 @@ module Server
         # Fake Codeforces Contests
         before do
           response_body = read_file_from_mock("/mock/codeforces_com_contests_running.html")
-          WebMock.stub_request(:get, 'http://codeforces.com/contests?locale=en').to_return({
+          WebMock.stub_request(:get, 'http://codeforces.com/contests?complete=true&locale=en').to_return({
             :status => 200,
             :headers => {
               'Content-Type' => 'text/html',
