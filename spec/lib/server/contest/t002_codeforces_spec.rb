@@ -21,7 +21,7 @@ module Server
 
       describe '001: Get contest list.1' do
         before do
-          response_body = read_file_from_mock("/mock/codeforces-20150121.html")
+          response_body = read_file_from_mock("/mock/codeforces_com_contests.html")
           WebMock.stub_request(:get, 'http://codeforces.com/contests?complete=true&locale=en').to_return({
             :status => 200,
             :headers => {
