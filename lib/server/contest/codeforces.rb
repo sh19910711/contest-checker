@@ -32,7 +32,7 @@ module Server
           contest          = {}
           elements[0].search("*").remove()
           contest["title"]  = elements[0].inner_text.strip
-          contest["date"]   = parse_time(elements[1].inner_text.strip)
+          contest["date"]   = parse_time(elements[2].inner_text.strip)
           contest["tag"]    = "Codeforces"
           contest_list.push(contest)
         end
