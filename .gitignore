@@ -3,3 +3,4 @@ coverage/
 tmp/
 spec/reports/
 .bundle/
+config
