@@ -6,7 +6,7 @@ group :production, :development do
   gem 'mechanize', :require => false
   gem 'nokogiri', :require => false
   gem 'sinatra', :require => false
-  gem 'google-api-client', :require => false
+  gem 'google-api-client', '~> 0.8.6', :require => false
   gem 'activesupport', :require => false
   gem 'simple-rss', :require => false
 end
