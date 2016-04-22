@@ -15,7 +15,7 @@ module Server
       def self.get_contest_list()
         agent            = Mechanize.new
         agent.user_agent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
-        contest_list_url = "http://www.codechef.com/contests"
+        contest_list_url = "https://www.codechef.com/contests"
         page             = agent.get(contest_list_url)
         doc              = Nokogiri::HTML(page.body)
         table            = doc.xpath('//div[@id = "primary-content"]//table')[0]

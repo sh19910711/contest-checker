@@ -7,7 +7,7 @@ module Server
         # Fake Codechef Contests
         before do
           response_body = read_file_from_mock("/mock/codechef_contest.html")
-          WebMock.stub_request(:get, 'http://www.codechef.com/contests').to_return({
+          WebMock.stub_request(:get, 'https://www.codechef.com/contests').to_return({
             :status => 200,
             :headers => {
               'Content-Type' => 'text/html',
