@@ -125,12 +125,10 @@ module Server
       CHECK_CF_CONTEST_HATENA_USER_PASSWORD,
     )
 
-    @@cnt ||= 0
-    3.times do
-      contests[@@cnt].find_new_contest.each do |item|
+    contests.each do |contest|
+      contest.find_new_contest.each do |item|
         test_set_data_to_hatena_group_calendar(calendar, item)
       end
-      @@cnt = (@@cnt + 1) % contests.length
     end
   end
 
