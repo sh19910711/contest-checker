@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.4'
 
 group :production, :development do
+  gem 'hatenagroup', :require => false
   gem 'mechanize', :require => false
   gem 'nokogiri', :require => false
   gem 'sinatra', :require => false
