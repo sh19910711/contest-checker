@@ -81,8 +81,9 @@ module Server
 
   # 指定した日付にテキストを追加する
   def test_set_data_to_hatena_group_calendar(group_id, contest)
-    date     = contest["date"]
+    date = contest["date"]
     return if date < DateTime.now
+    date = date.in_time_zone("Tokyo")
     p "add: #{contest}"
     keyword_date = get_keyword_date(date)
     str_date = get_str_date(date)
@@ -108,11 +109,11 @@ module Server
   end
 
   def get_keyword_date(date)
-    date.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d")
+    date.strftime("%Y-%m-%d")
   end
 
   def get_str_date(date)
-    date.in_time_zone("Tokyo").strftime("%H:%M")
+    date.strftime("%H:%M")
   end
 
   def find_new_contest_from_contest(contest)
@@ -123,11 +124,18 @@ module Server
   end
 
   def find_new_contest
-    find_new_contest_from_contest Contest::Codeforces
-    find_new_contest_from_contest Contest::Codechef
-    find_new_contest_from_contest Contest::Uva
-    find_new_contest_from_contest Contest::Toj
-    find_new_contest_from_contest Contest::HackerRank
+    contests = [
+      Contest::Codeforces,
+      Contest::Codechef,
+      Contest::Uva,
+      Contest::Toj,
+      Contest::HackerRank,
+    ]
+    @cnt ||= 0
+    3.times do
+      find_new_contest_from_contest contests[@cnt]
+      @cnt = (@cnt + 1) % contests.length
+    end
   end
 
   def find_new_contest_from_calendar(google_api, google_calendar)
