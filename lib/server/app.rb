@@ -135,9 +135,15 @@ module Server
   end
 
   def find_new_contest_from_calendar(google_api, google_calendar)
+    calendar = ::HatenaGroup::Calendar.new(
+      CHECK_CF_CONTEST_HATENA_GROUP_ID,
+      CHECK_CF_CONTEST_HATENA_USER_ID,
+      CHECK_CF_CONTEST_HATENA_USER_PASSWORD,
+    )
+
     contest_list = Contest::AtCoder.find_new_contest_from_calendar(google_api, google_calendar)
     contest_list.each do |item|
-      test_set_data_to_hatena_group_calendar(CHECK_CF_CONTEST_HATENA_GROUP_ID, item)
+      test_set_data_to_hatena_group_calendar(calendar, item)
     end
   end
 
