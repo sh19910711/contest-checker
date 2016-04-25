@@ -5,6 +5,7 @@ require 'mechanize'
 require 'date'
 require 'time'
 require 'google/api_client'
+require 'hatenagroup'
 
 module Server
   class App < Sinatra::Base
@@ -78,7 +79,6 @@ module Server
 
   module_function
 
-  # 指定したはてなグループのカレンダーにテキストを追加する実験
   # 指定した日付にテキストを追加する
   def test_set_data_to_hatena_group_calendar(group_id, contest)
     date     = contest["date"]
@@ -93,22 +93,17 @@ module Server
     else
       data     = "* #{str_date} #{title}"
     end
-    agent             = Mechanize.new
-    agent.user_agent  = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
-    agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    login_url = 'https://www.hatena.ne.jp/login'
-    page      = agent.get(login_url)
-    next_page = page.form_with do |form|
-      form["name"]     = CHECK_CF_CONTEST_HATENA_USER_ID
-      form["password"] = CHECK_CF_CONTEST_HATENA_USER_PASSWORD
-    end.submit
+
+    calendar = ::HatenaGroup::Calendar.new(
+      group_id,
+      CHECK_CF_CONTEST_HATENA_USER_ID,
+      CHECK_CF_CONTEST_HATENA_USER_PASSWORD,
+    )
+
     # 追加済みのデータがあるときは何もしない
-    target_url = "https://#{group_id}.g.hatena.ne.jp/keyword/#{keyword_date}?mode=edit"
-    agent.get(target_url).form_with(:name => 'edit') do |form|
-      next unless form
-      break if form["body"].include?(title)
-      form["body"] += "\n" + get_contest_line(contest) + "\n"
-      form.submit
+    day = calendar.day(keyword_date)
+    unless day.body.include?(title)
+      day.body = "#{day.body.strip}\n#{get_contest_line(contest)}\n"
     end
   end
 
