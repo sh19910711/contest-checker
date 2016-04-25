@@ -80,7 +80,7 @@ module Server
   module_function
 
   # 指定した日付にテキストを追加する
-  def test_set_data_to_hatena_group_calendar(group_id, contest)
+  def test_set_data_to_hatena_group_calendar(calendar, contest)
     date = contest["date"]
     return if date < DateTime.now
     date = date.in_time_zone("Tokyo")
@@ -94,12 +94,6 @@ module Server
     else
       data     = "* #{str_date} #{title}"
     end
-
-    calendar = ::HatenaGroup::Calendar.new(
-      group_id,
-      CHECK_CF_CONTEST_HATENA_USER_ID,
-      CHECK_CF_CONTEST_HATENA_USER_PASSWORD,
-    )
 
     # 追加済みのデータがあるときは何もしない
     day = calendar.day(keyword_date)
@@ -116,13 +110,6 @@ module Server
     date.strftime("%H:%M")
   end
 
-  def find_new_contest_from_contest(contest)
-    contest_list = contest.find_new_contest
-    contest_list.each do |item|
-      test_set_data_to_hatena_group_calendar(CHECK_CF_CONTEST_HATENA_GROUP_ID, item)
-    end
-  end
-
   def find_new_contest
     contests = [
       Contest::Codeforces,
@@ -131,10 +118,19 @@ module Server
       Contest::Toj,
       Contest::HackerRank,
     ]
-    @cnt ||= 0
+
+    calendar = ::HatenaGroup::Calendar.new(
+      CHECK_CF_CONTEST_HATENA_GROUP_ID,
+      CHECK_CF_CONTEST_HATENA_USER_ID,
+      CHECK_CF_CONTEST_HATENA_USER_PASSWORD,
+    )
+
+    @@cnt ||= 0
     3.times do
-      find_new_contest_from_contest contests[@cnt]
-      @cnt = (@cnt + 1) % contests.length
+      contests[@@cnt].find_new_contest.each do |item|
+        test_set_data_to_hatena_group_calendar(calendar, item)
+      end
+      @@cnt = (@@cnt + 1) % contests.length
     end
   end
 
