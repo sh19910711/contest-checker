@@ -164,7 +164,7 @@ describe 'T001: Routing Test' do
 
   describe "get_str_date" do
 
-    it { expect(Server.get_str_date(Server::Contest::Codeforces.parse_time("Nov/21/2014 19:30"))).to eq "01:30" }
+    it { expect(Server.get_str_date(Server::Contest::Codeforces.parse_time("Nov/21/2014 19:30"))).to eq "19:30" }
 
   end
 end
